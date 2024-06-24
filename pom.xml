@@ -12,9 +12,10 @@
 	<artifactId>LedScreensServerFor5A-75B</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>LedScreensServer</name>
-	<description>Demo project for Spring Boot</description>
+	<description></description>
 	<properties>
 		<java.version>22</java.version>
+		<start-class>com.home.LedScreensServer.LedScreensServerApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -27,17 +28,40 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>jnetpcap</groupId>-->
+<!--			<artifactId>jnetpcap</artifactId>-->
+<!--			<version>1.5.r1457-1i</version>-->
+<!--		</dependency>-->
+
+		<dependency>
+			<groupId>com.slytechs.jnet.jnetpcap</groupId>
+			<artifactId>jnetpcap-wrapper</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+
+
 	</dependencies>
+
+	<repositories>
+<!--		<repository>-->
+<!--			<id>clojars</id>-->
+<!--			<url>http://clojars.org/repo/</url>-->
+<!--		</repository>-->
+	</repositories>
 
 	<build>
 		<plugins>
@@ -51,6 +75,7 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+<!--					<jvmArguments>&#45;&#45;enable-preview</jvmArguments>-->
 				</configuration>
 			</plugin>
 		</plugins>

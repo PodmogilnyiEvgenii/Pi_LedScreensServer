@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title th:utext="${rawData.deviceId}">...</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h2>
+    <table class="table1">
+        <tr>
+            <th><a href="/">MAIN</a></th>
+            <th><a href="/devices/online">ONLINE</a></th>
+            <th><a href="/devices/offline">OFFLINE</a></th>
+            <th><a href="/devices/all">ALL</a></th>
+            <th><a href="/help">HELP</a></th>
+            <th th:utext="${time}"></th>
+        </tr>
+    </table>
+</h2>
+
+<h3 th:utext="${location}">LOCATION</h3>
+
+<div>
+    <table class="table2">
+        <tr class="tr1">
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        <tr class="tr2">
+            <th th:utext="${rawData.deviceId}">...</th>
+            <th th:utext="${rawData.name}">...</th>
+        </tr>
+
+        <tr class="tr1">
+            <th>Year</th>
+            <th>Month</th>
+            <th>Day</th>
+            <th>Hour</th>
+            <th>Minute</th>
+            <th>Second</th>
+        </tr>
+        <tr class="tr2">
+            <th th:utext="${rawData.year}">...</th>
+            <th th:utext="${rawData.month}">...</th>
+            <th th:utext="${rawData.day}">...</th>
+            <th th:utext="${rawData.hour}">...</th>
+            <th th:utext="${rawData.minute}">...</th>
+            <th th:utext="${rawData.second}">...</th>
+        </tr>
+
+        <tr class="tr1">
+            <th>Latitude</th>
+            <th>Longitude</th>
+        </tr>
+        <tr class="tr2">
+            <th th:utext="${rawData.latitude}">...</th>
+            <th th:utext="${rawData.longitude}">...</th>
+        </tr>
+
+        <tr class="tr1">
+            <th>Description</th>
+            <th>Temperature (°C)</th>
+            <th>Pressure (mmHg.)</th>
+            <th>Humidity (%)</th>
+            <th>Wind speed (meter/sec)</th>
+        </tr>
+        <tr class="tr2">
+            <th th:utext="${rawData.descriptionWeather}">...</th>
+            <th th:utext="${rawData.temperature}">...</th>
+            <th th:utext="${rawData.pressure}">...</th>
+            <th th:utext="${rawData.humidity}">...</th>
+            <th th:utext="${rawData.windSpeed}">...</th>
+        </tr>
+
+        <tr class="tr1">
+            <th>Last time get weather (sec)</th>
+            <th>Save status</th>
+        </tr>
+        <tr class="tr2">
+            <th th:utext="${rawData.lastTimeGetWeather}">...</th>
+            <th th:utext="${rawData.saveDataStatus}">...</th>
+        </tr>
+
+        <tr class="tr1">
+            <th colspan="6">Last 5 messages</th>
+        </tr>
+        <tr class="tr2" th:each="message : ${messages}">
+            <th colspan="6" align="left" th:utext="${message}">...</th>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <h3>PARAMETERS</h3>
+
+    <form action="#" th:action="@{'/device/'+${rawData.deviceId}+'/save'}" th:object="${saveParameters}" method="POST">
+        <table class="table3">
+            <tr class="tr3">
+                <th>Id</th>
+                <th>Name</th>
+                <th colspan="2">AppID</th>
+                <th>NTP server</th>
+            </tr>
+            <tr class="tr4">
+
+                <th><input type="text" th:field="*{id}" readonly></th>
+                <th><input type="text" th:field="*{name}"></th>
+                <th colspan="2"><input type="text" th:field="*{appid}" style="width:90%;" disabled></th>
+                <th><input type="text" th:field="*{ntpServer}" disabled></th>
+            </tr>
+
+            <tr class="tr3">
+                <th>Latitude</th>
+                <th>Longitude</th>
+            </tr>
+            <tr class="tr4">
+                <th><input type="text" th:field="*{latitude}"></th>
+                <th><input type="text" th:field="*{longitude}"></th>
+            </tr>
+
+            <tr class="tr3">
+                <th>dayBrightness</th>
+                <th>dayR</th>
+                <th>dayG</th>
+                <th>dayB</th>
+                <th>dayStart</th>
+            </tr>
+            <tr class="tr4">
+                <th><input type="text" th:field="*{dayBrightness}"></th>
+                <th><input type="text" th:field="*{dayR}"></th>
+                <th><input type="text" th:field="*{dayG}"></th>
+                <th><input type="text" th:field="*{dayB}"></th>
+                <th><input type="text" th:field="*{dayStart}"></th>
+            </tr>
+
+            <tr class="tr3">
+                <th>nightBrightness</th>
+                <th>nightR</th>
+                <th>nightG</th>
+                <th>nightB</th>
+                <th>nightStart</th>
+            </tr>
+            <tr class="tr4">
+                <th><input type="text" th:field="*{nightBrightness}"></th>
+                <th><input type="text" th:field="*{nightR}"></th>
+                <th><input type="text" th:field="*{nightG}"></th>
+                <th><input type="text" th:field="*{nightB}"></th>
+                <th><input type="text" th:field="*{nightStart}"></th>
+            </tr>
+        </table>
+        <h3>
+            <button type="submit" class="button1">Save rawData parameters</button>
+        </h3>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>LED clock service</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h2>
+    <table class="table1">
+        <tr>
+            <th><a href="/">MAIN</a></th>
+            <th><a href="/devices/online">ONLINE</a></th>
+            <th><a href="/devices/offline">OFFLINE</a></th>
+            <th><a href="/devices/all">ALL</a></th>
+            <th><a href="/help">HELP</a></th>
+            <th th:utext="${time}"></th>
+        </tr>
+    </table>
+</h2>
+
+<h3 th:utext="${location}">LOCATION</h3>
+
+<div>
+    <table class="table2">
+        <tr>
+            <th>№</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th></th>
+            <th>Status</th>
+            <th>Last message</th>
+        </tr>
+        <tr th:each="rawData : ${devices}">
+            <th th:utext="${rawData.id}">...</th>
+            <th th:utext="${rawData.deviceId}">...</th>
+            <th th:utext="${rawData.name}">...</th>
+            <th>
+                <a th:href="@{'/device/'+${rawData.deviceId}}">
+                    <button>SHOW</button>
+                </a>
+            </th>
+            <th th:utext="${rawData.status}">...</th>
+            <th align="left" th:utext="${rawData.lastMessage}">...</th>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

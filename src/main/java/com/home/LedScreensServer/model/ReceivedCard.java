@@ -1,11 +1,13 @@
 package com.home.LedScreensServer.model;
 
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 
 
 public class ReceivedCard {
-    LedScreen ledScreen;
+    @Getter private LedScreen ledScreen;
     ModbusLedRegisters modbusLedRegisters;
+    @Getter
     int number;
 
     public ReceivedCard(int number) {
@@ -14,7 +16,4 @@ public class ReceivedCard {
         this.number = number;
     }
 
-    public int getNumber() {
-        return number;
-    }
 }

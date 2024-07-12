@@ -1,12 +1,10 @@
 package com.home.LedScreensServer.screens;
 
-import com.home.LedScreensServer.scheduler.Network;
+import com.home.LedScreensServer.model.Network;
 import lombok.extern.slf4j.Slf4j;
 import org.jnetpcap.Pcap;
 import org.jnetpcap.PcapException;
 import org.jnetpcap.util.PcapUtils;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
 @Slf4j
 public class ScreenView {

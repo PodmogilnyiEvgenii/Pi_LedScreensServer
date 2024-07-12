@@ -14,7 +14,7 @@
 	<name>LedScreensServer</name>
 	<description></description>
 	<properties>
-		<java.version>22</java.version>
+		<java.version>21</java.version>
 		<start-class>com.home.LedScreensServer.LedScreensServerApplication</start-class>
 	</properties>
 	<dependencies>
